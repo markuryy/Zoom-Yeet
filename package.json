@@ -1,0 +1,22 @@
+{
+  "name": "auto-disconnect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderl19/auto-disconnect.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderl19/auto-disconnect/issues"
+  },
+  "homepage": "https://github.com/alexanderl19/auto-disconnect#readme",
+  "devDependencies": {
+    "prettier": "2.2.1"
+  }
+}
