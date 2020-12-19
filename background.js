@@ -15,3 +15,8 @@ chrome.runtime.onInstalled.addListener(function () {
     ]);
   });
 });
+
+// chrome.runtime.onMessage.addListener((request, sender) => {
+//   console.log(sender);
+//   console.log(request);
+// });
