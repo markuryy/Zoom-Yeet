@@ -4,7 +4,7 @@ let toolBar, leaveButton;
 let active;
 
 const threshold = 0.5;
-const delay = 10;
+const delay = 3;
 
 let timeRemaining;
 let countdownElement;
