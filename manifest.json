@@ -1,7 +1,7 @@
 {
-  "name": "Getting Started Example",
+  "name": "Auto Disconnect",
   "version": "1.0",
-  "description": "Build an Extension!",
+  "description": "Auto disconnector for Google Meets",
   "permissions": ["declarativeContent", "storage", "tabs"],
   "content_scripts": [
     {
