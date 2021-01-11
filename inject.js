@@ -11,7 +11,7 @@ chrome.storage.sync.get(
     timerLength = r.timerLength;
     timeRemaining = timerLength;
     timerStart = r.timerStart / 100;
-    instantDisconnect = r.instantDisconnect;
+    instantDisconnect = r.instantDisconnect / 100;
   }
 );
 
@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(function (message) {
   timerLength = message.timerLength;
   timeRemaining = timerLength;
   timerStart = message.timerStart / 100;
-  instantDisconnect = message.instantDisconnect;
+  instantDisconnect = message.instantDisconnect / 100;
 });
 
 let toolBar, leaveButton, countdownElement;
