@@ -29,8 +29,15 @@ const resetField = (element, previousTexts, redOutlineTimeouts) => {
   }, 1000);
 };
 
-const handleInput = (e, element, previousTexts, redOutlineTimeouts) => {
-  if (parseInt(element.value) <= 20 && parseInt(element.value) >= 0) {
+const handleInput = (
+  e,
+  element,
+  previousTexts,
+  redOutlineTimeouts,
+  min,
+  max
+) => {
+  if (parseInt(element.value) <= max && parseInt(element.value) >= min) {
     previousTexts[element.id] = element.value;
     saveNotification();
     storeOptions(timerLength, timerStart, instantDisconnect);
@@ -40,13 +47,13 @@ const handleInput = (e, element, previousTexts, redOutlineTimeouts) => {
 };
 
 timerLength.oninput = (e) => {
-  handleInput(e, timerLength, previousTexts, redOutlineTimeouts);
+  handleInput(e, timerLength, previousTexts, redOutlineTimeouts, 0, 20);
 };
 timerStart.oninput = (e) => {
-  handleInput(e, timerStart, previousTexts, redOutlineTimeouts);
+  handleInput(e, timerStart, previousTexts, redOutlineTimeouts, 1, 100);
 };
 instantDisconnect.oninput = (e) => {
-  handleInput(e, instantDisconnect, previousTexts, redOutlineTimeouts);
+  handleInput(e, instantDisconnect, previousTexts, redOutlineTimeouts, 1, 100);
 };
 
 let savedTimeout;
@@ -64,9 +71,15 @@ const storeOptions = (timerLength, timerStart, instantDisconnect) => {
     timerStart: timerStart.value,
     instantDisconnect: instantDisconnect.value,
   });
-  chrome.runtime.sendMessage({
-    timerLength: timerLength.value,
-    timerStart: timerStart.value,
-    instantDisconnect: instantDisconnect.value,
+
+  chrome.tabs.query({ url: "https://meet.google.com/*" }, (tabs) => {
+    console.log(tabs);
+    for (let i = 0; i < tabs.length; i++) {
+      chrome.tabs.sendMessage(tabs[i].id, {
+        timerLength: timerLength.value,
+        timerStart: timerStart.value,
+        instantDisconnect: instantDisconnect.value,
+      });
+    }
   });
 };
