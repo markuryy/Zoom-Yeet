@@ -12,14 +12,19 @@
         for="timer-length"
         >Timer Length</label
       >
-      <input type="number" id="timer-start" name="timer-length" />
+      <input type="number" id="timer-length" name="timer-length" />
       <span class="input-label">sec</span>
     </div>
     <div>
       <label class="input-field-label" id="timer-start-label" for="timer-start"
         >Timer Starts After</label
       >
-      <input type="number" id="timer-start" name="timer-start" />
+      <input
+        type="number"
+        id="timer-start"
+        name="timer-start"
+        pattern="[0-100]"
+      />
       <span class="input-label">%</span>
     </div>
     <div>
@@ -29,8 +34,15 @@
         for="instant-disconnect"
         >Instant Disconnect</label
       >
-      <input type="number" id="instant-disconnect" name="instant-disconnect" />
+      <input
+        type="number"
+        id="instant-disconnect"
+        name="instant-disconnect"
+        pattern="[0-100]"
+      />
       <span class="input-label">%</span>
     </div>
+    <p id="saved">Saved</p>
+    <script src="popup.js"></script>
   </body>
 </html>
