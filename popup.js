@@ -72,8 +72,7 @@ const storeOptions = (timerLength, timerStart, instantDisconnect) => {
     instantDisconnect: instantDisconnect.value,
   });
 
-  chrome.tabs.query({ url: "https://meet.google.com/*" }, (tabs) => {
-    console.log(tabs);
+  chrome.tabs.query({}, (tabs) => {
     for (let i = 0; i < tabs.length; i++) {
       chrome.tabs.sendMessage(tabs[i].id, {
         timerLength: timerLength.value,

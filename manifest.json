@@ -1,8 +1,8 @@
 {
   "name": "Auto Disconnect",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Auto disconnector for Google Meets",
-  "permissions": ["storage", "tabs"],
+  "permissions": ["storage"],
   "content_scripts": [
     {
       "matches": ["https://meet.google.com/*"],
