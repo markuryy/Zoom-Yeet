@@ -5,7 +5,7 @@
   "permissions": ["storage"],
   "content_scripts": [
     {
-      "matches": ["https://meet.google.com/*"],
+      "matches": ["https://zoom.us/*"],
       "js": ["inject.js"],
       "css": ["disconnect.css"]
     }

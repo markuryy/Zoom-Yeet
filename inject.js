@@ -1,5 +1,5 @@
 let alreadyInCall;
-let maxMembers;
+let maxMembers = 0;
 let active;
 
 let timerLength, timerStart, instantDisconnect;
@@ -25,8 +25,10 @@ chrome.runtime.onMessage.addListener(function (message) {
 
 let toolBar, leaveButton, countdownElement;
 const initializeElements = () => {
-  toolBar = document.querySelector("[class='NzPR9b']");
-  leaveButton = document.querySelector("[data-tooltip='Leave call']");
+  toolBar = document.querySelector('[class="footer__inner"]');
+  leaveButton = document.querySelector(
+    '[class="zmu-btn footer__leave-btn ax-outline ellipsis zmu-btn--danger zmu-btn__outline--blue"]'
+  );
 
   let parentElement = document.createElement("div");
   parentElement.setAttribute("class", "auto-disconnect");
@@ -61,13 +63,8 @@ const initializeElements = () => {
   switchElement.append(inputElement, sliderElement);
   parentElement.append(countdownElement, switchElement);
 
-  let dividerElement = document.createElement("div");
-  dividerElement.setAttribute("class", "auto-disconnect");
-  dividerElement.setAttribute("id", "divider");
-
-  parentElement.append(dividerElement);
-
-  toolBar.prepend(parentElement);
+  toolBar.lastChild.style.display = "inline-flex";
+  toolBar.lastChild.prepend(parentElement);
 };
 
 let leaveInterval;
@@ -82,6 +79,11 @@ const handleLeaveCall = () => {
         leaveInterval = undefined;
       } else if (timeRemaining - 1 === 0) {
         leaveButton.click();
+        document
+          .querySelector(
+            '[class="zmu-btn leave-meeting-options__btn leave-meeting-options__btn--default leave-meeting-options__btn--danger zmu-btn--default zmu-btn__outline--white"]'
+          )
+          .click();
         clearInterval(leaveInterval);
         leaveInterval = undefined;
       } else {
@@ -93,7 +95,10 @@ const handleLeaveCall = () => {
 };
 
 setInterval(() => {
-  let memberCount = document.querySelector("[jscontroller='FTBAv']");
+  let memberCount = document.querySelector(
+    '[class="footer-button__number-counter"]'
+  ).firstChild;
+
   //  Currently in Meeting
   if (memberCount) {
     if (!alreadyInCall) {
