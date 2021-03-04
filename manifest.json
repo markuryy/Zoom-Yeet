@@ -1,6 +1,6 @@
 {
   "name": "Zoom Yeet",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Opens Zoom meeting links in the web client and automatically disconnects at the end. Forked by Mark.",
   "permissions": [
 	"storage",

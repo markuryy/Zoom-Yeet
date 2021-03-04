@@ -5,6 +5,7 @@ let active;
 let timerLength, timerStart, instantDisconnect;
 
 let timeRemaining;
+
 chrome.storage.sync.get(
   ["timerLength", "timerStart", "instantDisconnect"],
   (r) => {
@@ -79,11 +80,12 @@ const handleLeaveCall = () => {
         leaveInterval = undefined;
       } else if (timeRemaining - 1 === 0) {
         leaveButton.click();
-        document
+        setTimeout(() => {
+		document
           .querySelector(
             '[class="zmu-btn leave-meeting-options__btn leave-meeting-options__btn--default leave-meeting-options__btn--danger zmu-btn--default zmu-btn__outline--white"]'
           )
-          .click();
+          .click();}, 1000);
         clearInterval(leaveInterval);
         leaveInterval = undefined;
       } else {
